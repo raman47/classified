@@ -74,10 +74,12 @@
             </tr>
         </thead>
         <tbody>
+            <?php $no = 1;?>
             @foreach ($categories as $category)
 
 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">{{ $loop->iteration }}</td>
 
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <div class="ps-3">
@@ -89,7 +91,7 @@
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex items-center">
-                        <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
+                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $category->image) }}" alt="Category Image">
                     </div>
                 </td>
                 <td class="px-6 py-4">
@@ -98,7 +100,7 @@
                 </td>
             </tr>
             @endforeach
-
+<?php $no++; ?>
 
         </tbody>
     </table>
