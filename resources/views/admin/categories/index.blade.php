@@ -1,12 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
+
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Categories') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
+
         <div class=" mx-auto sm:px-6 lg:px-8">
+            @if (session('message'))
+                <div class="bg-indigo-600 text-gray-200 m-2 p-2 rounded-md" id="alert">{{session('message')}}</div>
+            @endif
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
@@ -96,7 +101,16 @@
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                    <a href="{{route('categories.edit', $category->id)}}"  class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit |</a>
+                    <form method="POST" action="{{ route('categories.destroy', $category->id) }}" x-data>
+                        @csrf
+                        @method('DELETE')
+
+                        <a class="font-medium text-red-600 dark:text-red-500 hover:underline" href="{{ route('categories.destroy', $category->id) }}"
+                                @click.prevent="$root.submit();">
+                            Delete
+                        </a>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -104,7 +118,9 @@
 
         </tbody>
     </table>
-
+    <div class="px-2 mx-2">
+    {{$categories->links()}}
+    </div>
 </div>
 
             </div>
