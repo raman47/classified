@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::paginate(1);
+        $categories = Category::paginate(10);
         return  view('admin.categories.index', compact('categories'));
     }
     public function create(){

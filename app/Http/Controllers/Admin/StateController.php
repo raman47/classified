@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\State;
 
 class StateController extends Controller
 {
@@ -12,7 +13,8 @@ class StateController extends Controller
      */
     public function index()
     {
-        //
+        $states = State::paginate(10);
+        return view('admin.states.index', compact('states'));
     }
 
     /**
@@ -20,7 +22,7 @@ class StateController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.states.create');
     }
 
     /**
@@ -28,7 +30,12 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        State::create([
+            'name' => $request->name,
+            'country_id' => $request->country_id
+        ]);
+
+        return redirect()->route('states.index')->with('message', 'State Created Successfully');
     }
 
     /**
@@ -42,23 +49,28 @@ class StateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        //
+        $state = State::find($id);
+        return view('admin.states.edit', compact('state'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, State $state)
     {
-        //
+        $state->update([
+            'name' => $request->name
+        ]);
+
+        return redirect()->route('states.index')->with('message', 'State Updated Sucessfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
     }

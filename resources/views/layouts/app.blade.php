@@ -38,6 +38,7 @@
                             <x-app-link href="{{route('subcategories.index')}}" :active="request()->routeIs('subcategories.index')">SubCategories</x-app-link>
                             <x-app-link href="{{route('childcategories.index')}}" :active="request()->routeIs('childcategories.index')">ChildCategories</x-app-link>
                             <x-app-link href="{{route('countries.index')}}" :active="request()->routeIs('countries.index')">Countries</x-app-link>
+                            <x-app-link href="{{route('states.index')}}" :active="request()->routeIs('states.index')">States</x-app-link>
 
 
                             <div @click.away="open = false" class="relative" x-data="{ open: false }">

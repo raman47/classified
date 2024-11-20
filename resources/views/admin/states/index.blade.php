@@ -2,7 +2,7 @@
     <x-slot name="header">
 
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Countries') }}
+            {{ __('States') }}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
         <div class="flex justify-end">
-            <a href="{{ route('countries.create')}}" class="py-2 px-4 m2 bg-green-500 hover:bg-green-300 text-gray-50 rounded-md">New Country</a>
+            <a href="{{ route('states.create')}}" class="py-2 px-4 m2 bg-green-500 hover:bg-green-300 text-gray-50 rounded-md">New State</a>
         </div>
     </div>
 </div>
@@ -29,11 +29,11 @@
                     No.
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Name
+                    state
                 </th>
 
                 <th scope="col" class="px-6 py-3">
-                    Country Code
+                    Country
                 </th>
                 <th scope="col" class="px-6 py-3" >
                     Edit
@@ -42,31 +42,31 @@
         </thead>
         <tbody>
             <?php $no = 1;?>
-            @foreach ($countries as $country)
+            @foreach ($states as $state)
 
 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4">{{ $loop->iteration + ($countries->currentPage() - 1) * $countries->perPage() }}
+                <td class="px-6 py-4">{{ $loop->iteration + ($states->currentPage() - 1) * $states->perPage() }}
 
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                     <div class="ps-3">
-                        <div class="text-base font-semibold">{{$country->name}}</div>
+                        <div class="text-base font-semibold">{{$state->name}}</div>
                     </div>
                 </th>
 
                 <td class="px-6 py-4">
                     <div class="flex items-center">
-                        {{$country->country_code}}
+                        {{ $state->country->name}}
                     </div>
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <a href="{{route('countries.edit', $country->id)}}"  class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit |</a>
-                    <form method="POST" action="{{ route('countries.destroy', $country->id) }}" x-data>
+                    <a href="{{route('states.edit', $state->id)}}"  class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit |</a>
+                    <form method="POST" action="{{ route('countries.destroy', $state->id) }}" x-data>
                         @csrf
                         @method('DELETE')
 
-                        <a class="font-medium text-red-600 dark:text-red-500 hover:underline" href="{{ route('countries.destroy', $country->id) }}"
+                        <a class="font-medium text-red-600 dark:text-red-500 hover:underline" href="{{ route('states.destroy', $state->id) }}"
                                 @click.prevent="$root.submit();">
                             Delete
                         </a>
@@ -79,7 +79,7 @@
         </tbody>
     </table>
     <div class="px-5 mx-5">
-        {{$countries->links()}}
+        {{$states->links()}}
     </div>
 
 

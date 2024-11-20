@@ -75,9 +75,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     Category
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                {{-- <th scope="col" class="px-6 py-3">
                                     Image
-                                </th>
+                                </th> --}}
                                 <th scope="col" class="px-6 py-3">
                                     Edit
                                 </th>
@@ -88,7 +88,8 @@
                             @forelse ($subcategories as $sub_category)
                                 <tr
                                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td class="px-6 py-4">{{ $loop->iteration }}</td>
+                                    <td class="px-6 py-4">{{ $loop->iteration + ($subcategories->currentPage() - 1) * $subcategories->perPage() }}
+                                    </td>
 
                                     <th scope="row"
                                         class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -100,11 +101,11 @@
                                         {{ $sub_category->slug }}
                                     </td>
                                     <td class="px-6 py-4">{{ $sub_category->category->name ?? 'No Category' }}</td>
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $sub_category->image) }}" alt="Category Image">
-                                        </div>
-                                    </td>
+                                    {{--<td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $sub_category->image) }}" alt="Category Image">
+                                            </div>
+                                        </td> --}}
                                     <td class="px-6 py-4">
                                         <!-- Modal toggle -->
                                         <a href="{{ route('subcategories.edit', $sub_category->id) }}"
@@ -133,8 +134,12 @@
                             @endforelse
 
 
+
                         </tbody>
                     </table>
+                    <div class="px-2 mx-2">
+                        {{$subcategories->links()}}
+                    </div>
                 </div>
             </div>
         </div>

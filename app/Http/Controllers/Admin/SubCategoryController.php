@@ -16,7 +16,7 @@ class SubCategoryController extends Controller
     public function index()
     {
 
-        $subcategories = SubCategory::with('category')->paginate(12);
+        $subcategories = SubCategory::with('category')->paginate(10);
         //$subcategories = SubCategory::paginate(12);
 
         return  view('admin.subcategories.index', compact('subcategories'));
@@ -35,18 +35,24 @@ class SubCategoryController extends Controller
      */
     public function store(StoreSubCategoryRequest $request)
     {
-        if($request->hasFile('image')){
-            $path = $request->file('image')->storeAs('subcategories', $request->file('image')->getClientOriginalName(), 'public');
+        $path = null; // Default value if no file is uploaded
 
-            SubCategory::create([
-                'name' => $request->name,
-                'slug' => Str::slug($request->name),
-                'category_id' => $request->category_id,
-                'image' => $path
-            ]);
-            return redirect()->route('subcategories.index')->with('message', 'SubCategory Created Sucessfully');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->storeAs(
+                'subcategories',
+                $request->file('image')->getClientOriginalName(),
+                'public'
+            );
         }
-        dd('no image');
+
+        SubCategory::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'category_id' => $request->category_id,
+            'image' => $path // Will be null if no file is uploaded
+        ]);
+
+        return redirect()->route('subcategories.index')->with('message', 'SubCategory Created Successfully');
     }
 
 
