@@ -25,6 +25,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/postad', [PostAdController::class, 'index'])->name('postad');
+    Route::post('/postad/preview', [PostAdController::class, 'index'])->name('post-preview');
 });
 
 // Admin routes (protected by authentication middleware)
@@ -38,7 +41,6 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function
 
 // Publicly accessible route for subcategories (NO authentication required)
 Route::get('/subcategories/{id}', [FrontendSubCategoryController::class, 'getallsubcategories'])->name('frontend.subcategories');
-Route::get('/postad', [PostAdController::class, 'index'])->name('postad');
 
 
 Route::get('/get-states/{country_id}', [LocationController::class, 'getStates'])->name('getStates');
