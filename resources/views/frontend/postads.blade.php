@@ -24,7 +24,7 @@
   }
   ```
 -->
-<form method="POST" action="">
+<form method="POST" action="{{ route('postad-store') }}">
     @csrf
 
     <div class="space-y-12">
@@ -61,16 +61,16 @@
             </div> --}}
 
               <div class="sm:col-span-2 sm:col-start-1">
-                <label for="city" class="block text-sm/6 font-medium text-gray-900">Contact Name</label>
+                <label for="contact_name" class="block text-sm/6 font-medium text-gray-900">Contact Name</label>
                 <div class="mt-2">
-                  <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                  <input type="text" name="contact_name" id="contact_name" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                 </div>
               </div>
 
               <div class="sm:col-span-2">
-                <label for="region" class="block text-sm/6 font-medium text-gray-900">Phone</label>
+                <label for="phone" class="block text-sm/6 font-medium text-gray-900">Phone</label>
                 <div class="mt-2">
-                  <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                  <input type="text" name="phone" id="phone" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                 </div>
               </div>
 
@@ -88,15 +88,15 @@
                 </div>
               </div>
               <div class="sm:col-span-3">
-                <label for="company_name" class="block text-sm/6 font-medium text-gray-900">Address</label>
+                <label for="address" class="block text-sm/6 font-medium text-gray-900">Address</label>
                 <div class="mt-2">
-                  <input id="company_name" name="company_name" type="text" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                  <input id="address" name="address" type="text" autocomplete="address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                 </div>
               </div>
               <div class="sm:col-span-3">
-                <label for="company_name" class="block text-sm/6 font-medium text-gray-900">Postal Code</label>
+                <label for="postal_code" class="block text-sm/6 font-medium text-gray-900">Postal Code</label>
                 <div class="mt-2">
-                  <input id="company_name" name="company_name" type="text" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                  <input id="postal_code" name="postal_code" type="text" autocomplete="postal_code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                 </div>
               </div>
 
@@ -126,6 +126,7 @@
             <div class="mt-2">
                 <div id="editor" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                 </div>
+                <input type="hidden" name="content" id="hidden-content">
               {{-- <textarea id="about" name="about" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea> --}}
             </div>
           </div>
@@ -158,19 +159,19 @@
                 <label for="price" class="mt-1 text-sm/12 text-gray-600">Place of Ad</label>
                 <div class="mt-6 space-y-6">
                   <div class="flex items-center gap-x-2">
-                    <input id="push-everything" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-everything" name="ad_position" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-everything" class="block text-sm/6 font-medium text-gray-900">General Listing (90 Days Free Listing)</label>
                   </div>
                   <div class="flex items-center gap-x-2">
-                    <input id="push-email" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-email" name="ad_position" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-email" class="block text-sm/6 font-medium text-gray-900">Special Listings</label>
                   </div>
                   <div class="flex items-center gap-x-2">
-                    <input id="push-nothing" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-nothing" name="ad_position" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">Featured Listing</label>
                   </div>
                   <div class="flex items-center gap-x-2">
-                    <input id="push-nothing" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-nothing" name="ad_position" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">Sliding Ads</label>
                   </div>
                 </div>
@@ -180,19 +181,19 @@
                 <p class="mt-1 text-sm/12 text-gray-600">Price Plan</p>
                 <div class="mt-6 space-y-6">
                   <div class="flex items-center gap-x-3">
-                    <input id="push-everything" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-everything" name="price_plan" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-everything" class="block text-sm/6 font-medium text-gray-900">General Listing (90 Days Free Listing) (USD 0) per year</label>
                   </div>
                   <div class="flex items-center gap-x-3">
-                    <input id="push-email" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-email" name="price_plan" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-email" class="block text-sm/6 font-medium text-gray-900">Special Listings (USD 0) per year</label>
                   </div>
                   <div class="flex items-center gap-x-3">
-                    <input id="push-nothing" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-nothing" name="price_plan" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">Featured Listing (USD 0) per year</label>
                   </div>
                   <div class="flex items-center gap-x-3">
-                    <input id="push-nothing" name="push-notifications" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                    <input id="push-nothing" name="price_plan" type="radio" class="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
                     <label for="push-nothing" class="block text-sm/6 font-medium text-gray-900">Sliding Ads (USD 0) per year</label>
                   </div>
                 </div>
@@ -245,6 +246,19 @@
             ]
         }
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const editor = document.getElementById("editor"); // Adjust based on your editor initialization
+        const hiddenContentInput = document.getElementById("hidden-content");
+
+        // Add a listener to the form submission
+        document.querySelector("form").addEventListener("submit", function (e) {
+            // Update the hidden input field with the editor content
+            if (editor) {
+                hiddenContentInput.value = editor.innerHTML; // Use the appropriate method for your editor
+            }
+        });
+    });
 
     </script>
     <script>
