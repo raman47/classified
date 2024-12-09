@@ -9,7 +9,7 @@
             <div class="xl:w-1/3 md:w-1/2 p-4">
                 <div class="bg-gray-200 border border-gray-200 p-6 rounded-lg">
                     <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/' . $category->image) }}" alt="Category Image">
+                        <img class="w-10 h-10" src="{{ asset('storage/' . $category->image) }}" alt="Category Image">
                     </div>
                     <a href="{{ route('frontend.subcategories', ['id' => $category->id]) }}">
                         <h2 class="text-lg text-gray-900 font-medium title-font mb-2">{{$category->name}}</h2>

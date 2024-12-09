@@ -34,10 +34,10 @@
         </div>
     </nav> --}}
 
-    <div class="w-full bg-center bg-cover h-[38rem]" style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');">
-        <div class="flex items-center justify-center w-full h-full bg-gray-900/40">
+    <div class="w-full bg-center bg-cover h-[38rem]" style="background-image: url('{{ asset('images/Enlarge_ Guru Gobind Singh  Jibanner-topaz-standard v2-6x-min.jpg') }}'); background-position:left">
+        <div class="flex items-center justify-center w-full h-full ">
             <div class="text-center">
-                <div class="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg">
+                {{-- <div class="border border-gray-300 p-6 grid grid-cols-1 gap-6 bg-white shadow-lg rounded-lg">
                     {{-- <div class="flex flex-col md:flex-row">
                         <div class="">
                             <select class="border p-2 rounded">
@@ -59,7 +59,7 @@
                             </select>
                         </div>
                     </div> --}}
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="grid grid-cols-2 gap-2 border border-gray-200 p-2 rounded">
                             <div class="flex border rounded bg-gray-300 items-center p-2 ">
                                 <svg class="fill-current text-gray-800 mr-2 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -97,8 +97,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center"><button class="p-2 border w-1/4 rounded-md bg-gray-800 text-white">Search</button></div>
-                </div>
+                    <div class="flex justify-center"><button class="p-2 border w-1/4 rounded-md bg-gray-800 text-white">Search</button></div> --}}
+                {{-- </div>  --}}
             </div>
         </div>
     </div>
